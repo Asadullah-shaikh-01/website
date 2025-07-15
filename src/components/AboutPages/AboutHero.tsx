@@ -1,0 +1,82 @@
+"use client";
+import { motion } from "framer-motion";
+import {
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaNodeJs,
+  FaPython,
+} from "react-icons/fa";
+import { cn } from "@/lib/utils";
+
+const techIcons = [
+  { icon: <FaHtml5 />, color: "text-orange-400", label: "HTML5" },
+  { icon: <FaCss3Alt />, color: "text-blue-400", label: "CSS3" },
+  { icon: <FaJs />, color: "text-yellow-400", label: "JavaScript" },
+  { icon: <FaReact />, color: "text-cyan-400", label: "React.js" },
+  { icon: <FaNodeJs />, color: "text-green-500", label: "Node.js" },
+  { icon: <FaPython />, color: "text-blue-300", label: "Python" },
+];
+
+export default function AboutHero() {
+  return (
+    <section className="relative bg-[#0f172a] text-white py-28 px-6 md:px-20 overflow-hidden">
+      {/* Glowing gradient background */}
+      <div className="absolute inset-0 -z-10 flex justify-center items-center">
+        <div className="w-[900px] h-[900px] bg-gradient-to-br from-cyan-500 to-blue-700 opacity-10 blur-[120px] rounded-[40%]"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto text-center space-y-10">
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-extrabold text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text drop-shadow-md"
+        >
+          Crafting Future-Ready Digital Solutions
+        </motion.h1>
+
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-lg text-gray-300 max-w-2xl mx-auto"
+        >
+          Ciphernest transforms ideas into powerful digital products using the
+          latest technologies, frameworks, and future-first thinking.
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.a
+          href="/contact"
+          whileHover={{ scale: 1.05 }}
+          className="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-md shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          Let’s Build Together
+        </motion.a>
+
+        {/* Tech Grid */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mt-16"
+        >
+          {techIcons.map((tech, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.1 }}
+              className="bg-[#1e293b] hover:bg-[#233046] border border-cyan-500/20 p-4 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-cyan-500/20 transition rounded-md"
+            >
+              <div className={cn("text-3xl mb-2", tech.color)}>{tech.icon}</div>
+              <span className="text-sm text-gray-300">{tech.label}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
