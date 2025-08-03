@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import img from "../../../public/images/CMMS.jpeg";
+import img from "../../../public/images/CMMS.png";
 
 export default function ServiceCmms() {
   const services = [

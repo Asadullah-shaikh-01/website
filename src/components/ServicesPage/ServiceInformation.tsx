@@ -20,7 +20,7 @@ export default function ServiceInformation() {
       icon: <LuSparkles className="text-blue-500 text-4xl mb-4" />,
       title: "Staying Ahead of the Curve",
       description:
-        "At Sovorun, we prioritize modernity and innovation. By delivering comprehensive UI/UX designs, we help your business stay ahead in a competitive market.",
+        "At Zentronix, we prioritize modernity and innovation. By delivering comprehensive UI/UX designs, we help your business stay ahead in a competitive market.",
     },
   ];
 

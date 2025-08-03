@@ -10,6 +10,7 @@ import {
   FaTools,
   FaHandshake,
 } from "react-icons/fa";
+import { Contact } from "lucide-react";
 
 const features = [
   {
@@ -109,8 +110,8 @@ export default function WhyChooseUs() {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          CipherNest delivers solutions that empower growth, optimize
-          operations, and ensure your digital success.
+          Zentronix delivers solutions that empower growth, optimize operations,
+          and ensure your digital success.
         </motion.p>
       </div>
 
@@ -145,7 +146,7 @@ export default function WhyChooseUs() {
       {/* CTA */}
       <div className="mt-20 text-center relative z-10">
         <motion.a
-          href="#contact"
+          href="contact"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="inline-block px-8 py-3 text-white font-semibold bg-gradient-to-r from-[#667eea] to-[#764ba2] rounded-full shadow-lg hover:shadow-xl transition-all duration-300"

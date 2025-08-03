@@ -3,11 +3,17 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import img1 from "../../public/images/E-COMMERCE-IAMGE-PROJECT.jpg";
+import img2 from "../../public/images/MOBILE-APP-PROJECT.jpg";
+import img3 from "../../public/images/CRM-BACKEND.webp";
+import img4 from "../../public/images/INVENTORY-SYSTEM.jpg";
+import img5 from "../../public/images/CHAT-SUPPORT-IMAGES.webp";
+import img6 from "../../public/images/Analytics-Dashboard.webp";
 
 const projects = [
   {
     title: "E-commerce Website",
-    image: "/projects/ecommerce.png",
+    image: img1,
     gradient: "from-[#ffecd2] to-[#fcb69f]",
     description:
       "A complete B2C online store with cart, payment & admin dashboard.",
@@ -15,28 +21,28 @@ const projects = [
   },
   {
     title: "Mobile App UI",
-    image: "/projects/mobile-ui.png",
+    image: img2,
     gradient: "from-[#c2e9fb] to-[#a1c4fd]",
     description: "Modern, responsive UI for Android & iOS mobile application.",
     tags: ["Figma", "React Native", "Tailwind"],
   },
   {
     title: "CRM Backend API",
-    image: "/projects/crm.png",
+    image: img3,
     gradient: "from-[#d4fc79] to-[#96e6a1]",
     description: "REST API for CRM with auth, logging, and sync capabilities.",
     tags: ["Node.js", "Express", "JWT", "PostgreSQL"],
   },
   {
     title: "Inventory System",
-    image: "/projects/inventory.png",
+    image: img4,
     gradient: "from-[#fddb92] to-[#d1fdff]",
     description: "Stock & inventory management with tracking and reporting.",
     tags: ["Django", "SQLite", "Chart.js"],
   },
   {
     title: "Chat Support Feature",
-    image: "/projects/chat.png",
+    image: img5,
     gradient: "from-[#ffecd2] to-[#fcb69f]",
     description:
       "Live support chat for real-time communication on web & mobile.",
@@ -44,7 +50,7 @@ const projects = [
   },
   {
     title: "Analytics Dashboard",
-    image: "/projects/analytics.png",
+    image: img6,
     gradient: "from-[#fbc2eb] to-[#a6c1ee]",
     description: "Admin dashboard with analytics and user behavior tracking.",
     tags: ["Next.js", "Recharts", "Tailwind CSS"],

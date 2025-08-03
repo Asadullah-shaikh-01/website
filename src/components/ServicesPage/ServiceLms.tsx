@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import img from "../../../public/images/LMS.webp";
+import img from "../../../public/images/LMS.jpg";
 
 export default function ServiceLms() {
   const services = [

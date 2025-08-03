@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import img from "../../../public/images/SaaS.webp";
+import img from "../../../public/images/SaaS.jpg";
 
 export default function ServiceSaasDevelopment() {
   const services = [

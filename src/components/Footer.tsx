@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import logo from "../../public/images/zentronix.jpg";
 import {
   Mail,
   Phone,
@@ -11,6 +12,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -29,24 +31,32 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#11121c] text-white pt-20 pb-10 px-6 overflow-hidden z-10">
+      {/* Background blobs */}
       <div className="absolute top-[-50px] left-[-50px] w-96 h-96 bg-purple-500 rounded-full blur-[120px] opacity-20 -z-10" />
       <div className="absolute bottom-[-50px] right-[-50px] w-96 h-96 bg-pink-500 rounded-full blur-[120px] opacity-20 -z-10" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        {/* Brand Info */}
-        <div>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-pink-600 text-white font-bold flex items-center justify-center rounded-full shadow-md">
-              C
+        {/* Premium Neon Logo */}
+        <div className="flex flex-col">
+          <div className="flex items-center justify-start mb-6">
+            <div className="relative p-[4px] rounded-xl neon-hover">
+              {/* Outer Neon Ring */}
+              <div className="absolute inset-0 rounded-xl neon-border neon-pulse neon-rotate" />
+              {/* Inner Soft Glow */}
+              <div className="absolute inset-0 rounded-xl neon-soft-glow" />
+              {/* Glass Box */}
+              <div className="relative px-5 py-4 rounded-xl bg-white/10 backdrop-blur-md shadow-lg flex items-center justify-center">
+                <Image
+                  src={logo}
+                  alt="Company Logo"
+                  width={160}
+                  height={60}
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
-            <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
-              CipherNest
-            </span>
           </div>
-          <p className="text-gray-400 text-sm">
-            Innovative IT partner providing SaaS, CRM, and scalable digital
-            products that empower businesses.
-          </p>
         </div>
 
         {/* Sitemap */}
@@ -86,53 +96,26 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact Info */}
+        {/* Contact */}
         <div>
           <h4 className="text-lg font-semibold mb-4">Contact</h4>
           <ul className="space-y-3 text-gray-400 text-sm">
             <li className="flex items-center gap-2">
               <Mail size={16} />
               <a
-                href="mailto:hello@ciphernest.com"
+                href="mailto:hello@zentronic.com"
                 className="hover:text-pink-400 transition"
               >
-                hello@ciphernest.com
+                hello@zentronic.com
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} />
               <a
-                href="mailto:support@ciphernest.com"
+                href="mailto:support@zentronic.com"
                 className="hover:text-pink-400 transition"
               >
-                support@ciphernest.com
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail size={16} />
-              <a
-                href="mailto:info@ciphernest.com"
-                className="hover:text-pink-400 transition"
-              >
-                info@ciphernest.com
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail size={16} />
-              <a
-                href="mailto:sales@ciphernest.com"
-                className="hover:text-pink-400 transition"
-              >
-                sales@ciphernest.com
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail size={16} />
-              <a
-                href="mailto:hr@ciphernesttechnologies.com"
-                className="hover:text-pink-400 transition"
-              >
-                hr@ciphernesttechnologies.com
+                support@zentronic.com
               </a>
             </li>
             <li className="flex items-center gap-2">
@@ -193,12 +176,13 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Footer Bottom */}
+      {/* Bottom */}
       <div className="mt-14 border-t border-white/10 pt-6 text-sm text-center text-gray-500">
-        &copy; {new Date().getFullYear()} Ciphernest. All rights reserved.
+        &copy; {new Date().getFullYear()} Zentronic Solutions. All rights
+        reserved.
       </div>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top */}
       {showTopBtn && (
         <button
           onClick={scrollToTop}
@@ -207,6 +191,67 @@ export default function Footer() {
           <ChevronUp className="text-white" />
         </button>
       )}
+
+      {/* Neon Glow CSS */}
+      <style jsx>{`
+        @keyframes gradientMove {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        @keyframes pulseGlow {
+          0%,
+          100% {
+            filter: drop-shadow(0 0 10px rgba(255, 78, 205, 0.9))
+              drop-shadow(0 0 16px rgba(168, 85, 247, 0.8))
+              drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
+          }
+          50% {
+            filter: drop-shadow(0 0 20px rgba(255, 78, 205, 1))
+              drop-shadow(0 0 28px rgba(168, 85, 247, 1))
+              drop-shadow(0 0 36px rgba(59, 130, 246, 1));
+          }
+        }
+        @keyframes slowRotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        .neon-border {
+          background: linear-gradient(270deg, #ff4ecd, #a855f7, #3b82f6);
+          background-size: 400% 400%;
+        }
+        .neon-pulse {
+          animation: gradientMove 6s ease infinite,
+            pulseGlow 2.5s ease-in-out infinite;
+        }
+        .neon-rotate {
+          animation: slowRotate 20s linear infinite;
+        }
+        .neon-soft-glow {
+          box-shadow: inset 0 0 25px rgba(255, 78, 205, 0.5),
+            inset 0 0 50px rgba(168, 85, 247, 0.4),
+            inset 0 0 70px rgba(59, 130, 246, 0.4);
+          transition: all 0.3s ease-in-out;
+        }
+        .neon-hover:hover .neon-soft-glow {
+          box-shadow: inset 0 0 40px rgba(255, 78, 205, 0.8),
+            inset 0 0 70px rgba(168, 85, 247, 0.7),
+            inset 0 0 90px rgba(59, 130, 246, 0.7);
+        }
+        .neon-hover:hover {
+          transform: scale(1.07);
+        }
+      `}</style>
     </footer>
   );
 }

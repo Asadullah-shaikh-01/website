@@ -76,7 +76,7 @@ export default function AboutSection() {
                   Founded in 2021
                 </h3>
                 <p className="text-gray-300 leading-relaxed">
-                  Ciphernest was born from a shared passion for technology and
+                  Zentronix was born from a shared passion for technology and
                   innovation. What started as a two-person team in a small
                   co-working space has now evolved into a full-fledged IT
                   powerhouse serving clients across industries.

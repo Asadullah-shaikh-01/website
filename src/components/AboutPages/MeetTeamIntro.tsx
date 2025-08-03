@@ -45,8 +45,8 @@ export default function MeetTeamIntro() {
         >
           <div className="relative p-6 sm:p-8 rounded-xl bg-[#121827]/50 border-l-4 border-pink-500 shadow-lg">
             <p className="text-gray-300 text-lg leading-relaxed">
-              At <span className="text-white font-semibold">Ciphernest</span>,
-              we know that exceptional results come from exceptional minds. Our
+              At <span className="text-white font-semibold">Zentronix</span>, we
+              know that exceptional results come from exceptional minds. Our
               team consists of creative developers, strategic marketers,
               visionary designers, and agile project managers. We collaborate,
               innovate, and solve problems together—driving growth for startups

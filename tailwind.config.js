@@ -12,11 +12,24 @@ module.exports = {
 
   theme: {
     extend: {
-      // Optional: Extend colors, fonts, etc. here
+      colors: {
+        brand: "#8e2de2", // example premium purple brand color
+      },
+      animation: {
+        "spin-slow": "spin 20s linear infinite",
+      },
+      boxShadow: {
+        glow: "0 0 20px rgba(147, 51, 234, 0.5)",
+      },
+      blur: {
+        xs: "2px",
+      },
     },
   },
 
   plugins: [
-    // Add any Tailwind plugins here (forms, typography, etc.)
+    // You can add official plugins like forms/typography here
+    // require('@tailwindcss/forms'),
+    // require('@tailwindcss/typography'),
   ],
 };

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import img from "../../../public/images/App.webp";
+import img from "../../../public/images/App.png";
 
 export default function ServiceAppDevelopment() {
   const services = [

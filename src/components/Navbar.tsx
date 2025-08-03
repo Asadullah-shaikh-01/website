@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import logo from "../../public/images/zentronix.jpg";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -28,22 +30,41 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-[#0f0f0f]/70 to-[#1a1a1a]/70 dark:from-black/80 dark:to-gray-900/80 border-b border-gray-800 shadow-xl">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/80 border-b border-gray-800 shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 py-4 md:py-5 flex justify-between items-center">
+        {/* Logo Only */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex items-center space-x-2"
+          className="flex items-center"
         >
-          <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-pink-600 text-white font-bold flex items-center justify-center rounded-full shadow-md">
-            C
-          </div>
-          <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
-            CipherNest
-          </span>
+          {/* Neon Logo Box */}
+          <motion.div
+            whileHover={{ scale: 1.08 }}
+            className="relative p-[4px] rounded-xl"
+          >
+            {/* Outer Neon Ring */}
+            <div className="absolute inset-0 rounded-xl neon-border neon-pulse neon-rotate" />
+
+            {/* Inner Soft Glow */}
+            <div className="absolute inset-0 rounded-xl neon-soft-glow" />
+
+            {/* Glassmorphism Inner Box */}
+            <div className="relative px-5 py-4 rounded-xl bg-white/10 backdrop-blur-md shadow-lg flex items-center justify-center">
+              <Image
+                src={logo}
+                alt="Company Logo"
+                width={160}
+                height={60}
+                className="object-contain"
+                priority
+              />
+            </div>
+          </motion.div>
         </motion.div>
 
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-10 text-sm font-semibold tracking-wide text-white">
           {navLinks.map((link, i) => (
             <motion.div
@@ -65,10 +86,11 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Theme + Buttons */}
         <div className="flex items-center space-x-4">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white hover:scale-110 transition"
+            className="p-2 rounded-full bg-gray-700 text-white hover:scale-110 transition"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -76,11 +98,12 @@ export default function Navbar() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-4 py-1.5 text-sm rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md hover:shadow-lg transition"
+            className="px-4 py-1.5 text-sm rounded-full bg-pink-500 text-white shadow-md hover:shadow-lg transition"
           >
             <Link href="/signup">Sign Up</Link>
           </motion.button>
 
+          {/* Mobile Menu */}
           <div className="md:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -92,6 +115,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Links */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -120,6 +144,59 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Neon Glow CSS */}
+      <style jsx>{`
+        @keyframes gradientMove {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        @keyframes pulseGlow {
+          0%,
+          100% {
+            filter: drop-shadow(0 0 8px rgba(255, 78, 205, 0.8))
+              drop-shadow(0 0 12px rgba(168, 85, 247, 0.6))
+              drop-shadow(0 0 16px rgba(59, 130, 246, 0.6));
+          }
+          50% {
+            filter: drop-shadow(0 0 14px rgba(255, 78, 205, 1))
+              drop-shadow(0 0 20px rgba(168, 85, 247, 0.9))
+              drop-shadow(0 0 24px rgba(59, 130, 246, 0.9));
+          }
+        }
+        @keyframes slowRotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        .neon-border {
+          background: linear-gradient(270deg, #ff4ecd, #a855f7, #3b82f6);
+
+          background-size: 400% 400%;
+        }
+        .neon-pulse {
+          animation: gradientMove 6s ease infinite,
+            pulseGlow 3s ease-in-out infinite;
+        }
+        .neon-rotate {
+          animation: slowRotate 20s linear infinite;
+        }
+        .neon-soft-glow {
+          box-shadow: inset 0 0 20px rgba(255, 78, 205, 0.4),
+            inset 0 0 40px rgba(168, 85, 247, 0.3),
+            inset 0 0 60px rgba(59, 130, 246, 0.3);
+        }
+      `}</style>
     </header>
   );
 }

@@ -28,7 +28,7 @@ export default function HeroSection() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="text-lg md:text-xl text-gray-700"
         >
-          Ciphernest delivers future-ready IT solutions with modern design,
+          Zentronix delivers future-ready IT solutions with modern design,
           innovation, and technology.
         </motion.p>
 

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import img from "../../../public/images/Blockchain.webp";
+import img from "../../../public/images/Blockchain.png";
 
 export default function BlockchainDevelopment() {
   const services = [

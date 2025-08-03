@@ -12,8 +12,55 @@ import {
   FaRocket,
   FaUsers,
   FaGlobe,
+  FaLightbulb,
+  FaBalanceScale,
 } from "react-icons/fa";
 import Image from "next/image";
+import img1 from "../../../public/images/innovation.jpg";
+import img2 from "../../../public/images/Team-Work.jpg";
+import img3 from "../../../public/images/life.jpg";
+
+const cultureData = [
+  {
+    id: 1,
+    title: "Innovation at Every Step",
+    description:
+      "We nurture an environment where creativity meets technology. Our teams brainstorm, experiment, and innovate to deliver world-class IT solutions.",
+    points: [
+      "Encouraging creative ideas",
+      "Adopting latest technologies",
+      "Innovative problem-solving",
+    ],
+    icon: <FaLightbulb className="text-yellow-500 text-xl" />,
+    image: img1,
+  },
+  {
+    id: 2,
+    title: "Teamwork & Collaboration",
+    description:
+      "At Zentronix, collaboration drives our success. We work together, share knowledge, and celebrate wins as one strong team.",
+    points: [
+      "Cross-functional collaboration",
+      "Team-building activities",
+      "Shared project ownership",
+    ],
+    icon: <FaUsers className="text-blue-500 text-xl" />,
+    image: img2,
+  },
+  {
+    id: 3,
+    title: "Work-Life Balance",
+    description:
+      "We believe in balance. Our flexible schedules and fun events keep our team energized, creative, and ready to innovate.",
+    points: [
+      "Flexible working hours",
+      "Wellness programs",
+      "Celebrations & outings",
+    ],
+    icon: <FaBalanceScale className="text-green-500 text-xl" />,
+    image: img3,
+  },
+];
 
 export default function CareerHome() {
   return (
@@ -75,28 +122,111 @@ export default function CareerHome() {
       </section>
 
       {/* Office Culture Gallery */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">
-            Glimpses of Our Culture
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((id) => (
-              <motion.div
-                key={id}
-                className="rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300"
-                whileHover={{ scale: 1.05 }}
+      <section className="relative py-20 px-6 overflow-hidden bg-gradient-to-b from-purple-50 via-white to-purple-50">
+        {/* Tech Grid Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg
+            className="w-full h-full opacity-20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <pattern
+                id="grid"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
               >
-                <Image
-                  src={`/images/office${id}.jpg`}
-                  alt={`Office ${id}`}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-64"
+                <path
+                  d="M40 0H0V40"
+                  fill="none"
+                  stroke="url(#grad)"
+                  strokeWidth="0.5"
                 />
+                <defs>
+                  <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#9333EA" />
+                    <stop offset="100%" stopColor="#EC4899" />
+                  </linearGradient>
+                </defs>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+
+        {/* Floating Gradient Blobs */}
+        <motion.div
+          className="absolute top-10 left-20 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-25"
+          animate={{ y: [0, 30, 0], x: [0, 15, 0] }}
+          transition={{ repeat: Infinity, duration: 8 }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-25"
+          animate={{ y: [0, -25, 0], x: [0, -15, 0] }}
+          transition={{ repeat: Infinity, duration: 10 }}
+        />
+
+        {/* Section Content */}
+        <div className="relative max-w-7xl mx-auto space-y-24">
+          {cultureData.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className={`grid md:grid-cols-2 gap-12 items-center ${
+                index % 2 === 1 ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Parallax Image */}
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5 }}
+                className="relative group overflow-hidden rounded-xl shadow-2xl"
+              >
+                <motion.div
+                  initial={{ y: 0 }}
+                  whileHover={{ y: -15 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={600}
+                    height={400}
+                    className="rounded-xl object-cover"
+                  />
+                </motion.div>
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500" />
               </motion.div>
-            ))}
-          </div>
+
+              {/* Glassmorphism Text Card */}
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="space-y-6 bg-white/60 backdrop-blur-md p-6 rounded-2xl shadow-lg"
+              >
+                <h3 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                  {item.icon} {item.title}
+                </h3>
+                <p className="text-lg text-gray-600">{item.description}</p>
+                <ul className="space-y-3">
+                  {item.points.map((point, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-gray-700"
+                    >
+                      <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
