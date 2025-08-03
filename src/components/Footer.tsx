@@ -41,7 +41,8 @@ export default function Footer() {
           <div className="flex items-center justify-start mb-6">
             <div className="relative p-[4px] rounded-xl neon-hover">
               {/* Outer Neon Ring */}
-              <div className="absolute inset-0 rounded-xl neon-border neon-pulse neon-rotate" />
+              <div className="absolute inset-0 rounded-xl neon-border neon-pulse" />{" "}
+              {/* No rotation */}
               {/* Inner Soft Glow */}
               <div className="absolute inset-0 rounded-xl neon-soft-glow" />
               {/* Glass Box */}
@@ -63,36 +64,23 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-4">Sitemap</h4>
           <ul className="space-y-2 text-gray-400 text-sm">
-            <li>
-              <Link href="/" className="hover:text-pink-400 transition">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-pink-400 transition">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:text-pink-400 transition">
-                Our Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/team" className="hover:text-pink-400 transition">
-                Meet the Team
-              </Link>
-            </li>
-            <li>
-              <Link href="/careers" className="hover:text-pink-400 transition">
-                Careers
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-pink-400 transition">
-                Contact
-              </Link>
-            </li>
+            {[
+              { name: "Home", href: "/" },
+              { name: "About Us", href: "/about" },
+              { name: "Our Services", href: "/services" },
+              { name: "Meet the Team", href: "/team" },
+              { name: "Careers", href: "/careers" },
+              { name: "Contact", href: "/contact" },
+            ].map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className="hover:text-pink-400 transition"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -205,25 +193,17 @@ export default function Footer() {
             background-position: 0% 50%;
           }
         }
-        @keyframes pulseGlow {
+        @keyframes glowBreathing {
           0%,
           100% {
-            filter: drop-shadow(0 0 10px rgba(255, 78, 205, 0.9))
-              drop-shadow(0 0 16px rgba(168, 85, 247, 0.8))
-              drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
+            filter: drop-shadow(0 0 10px rgba(255, 78, 205, 0.8))
+              drop-shadow(0 0 16px rgba(168, 85, 247, 0.6))
+              drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));
           }
           50% {
-            filter: drop-shadow(0 0 20px rgba(255, 78, 205, 1))
-              drop-shadow(0 0 28px rgba(168, 85, 247, 1))
-              drop-shadow(0 0 36px rgba(59, 130, 246, 1));
-          }
-        }
-        @keyframes slowRotate {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
+            filter: drop-shadow(0 0 18px rgba(255, 78, 205, 1))
+              drop-shadow(0 0 26px rgba(168, 85, 247, 0.9))
+              drop-shadow(0 0 34px rgba(59, 130, 246, 0.9));
           }
         }
         .neon-border {
@@ -232,21 +212,18 @@ export default function Footer() {
         }
         .neon-pulse {
           animation: gradientMove 6s ease infinite,
-            pulseGlow 2.5s ease-in-out infinite;
-        }
-        .neon-rotate {
-          animation: slowRotate 20s linear infinite;
+            glowBreathing 3s ease-in-out infinite;
         }
         .neon-soft-glow {
-          box-shadow: inset 0 0 25px rgba(255, 78, 205, 0.5),
-            inset 0 0 50px rgba(168, 85, 247, 0.4),
-            inset 0 0 70px rgba(59, 130, 246, 0.4);
+          box-shadow: inset 0 0 25px rgba(255, 78, 205, 0.4),
+            inset 0 0 50px rgba(168, 85, 247, 0.3),
+            inset 0 0 70px rgba(59, 130, 246, 0.3);
           transition: all 0.3s ease-in-out;
         }
         .neon-hover:hover .neon-soft-glow {
-          box-shadow: inset 0 0 40px rgba(255, 78, 205, 0.8),
-            inset 0 0 70px rgba(168, 85, 247, 0.7),
-            inset 0 0 90px rgba(59, 130, 246, 0.7);
+          box-shadow: inset 0 0 40px rgba(255, 78, 205, 0.7),
+            inset 0 0 70px rgba(168, 85, 247, 0.6),
+            inset 0 0 90px rgba(59, 130, 246, 0.6);
         }
         .neon-hover:hover {
           transform: scale(1.07);

@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import BlockchainDevelopment from "@/components/ServicesPage/BlockchainDevelopment";
 import CrmSolution from "@/components/ServicesPage/CrmSolution";
 import ErpSolution from "@/components/ServicesPage/ErpSolution";
 import ServiceAppDevelopment from "@/components/ServicesPage/ServiceAppDevelopment";
@@ -28,7 +27,6 @@ function page() {
       <ServiceAppDevelopment />
       <ErpSolution />
       <CrmSolution />
-      <BlockchainDevelopment />
       <ServiceEndSection />
       <Footer />
     </>
